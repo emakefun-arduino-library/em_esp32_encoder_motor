@@ -1,4 +1,5 @@
 var files_dup =
 [
-    [ "C:", "dir_e6bb53534ac0e427887cf7a94c0c004e.html", "dir_e6bb53534ac0e427887cf7a94c0c004e" ]
+    [ "examples", "dir_d28a4824dc47e487b107a5db32ef43c4.html", "dir_d28a4824dc47e487b107a5db32ef43c4" ],
+    [ "src", "dir_68267d1309a1af8e8297ef4c3efbcdba.html", "dir_68267d1309a1af8e8297ef4c3efbcdba" ]
 ];
