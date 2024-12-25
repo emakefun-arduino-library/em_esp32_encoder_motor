@@ -1,0 +1,17 @@
+name: Create New Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto_release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create New Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: ${{ secrets.RELEASE_TOKEN }}
+        automatic_release_tag: "latest"
+        prerelease: false
