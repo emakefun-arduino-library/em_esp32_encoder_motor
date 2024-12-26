@@ -15,8 +15,13 @@ jobs:
       examples: ${{steps.get_examples.outputs.examples}}
 
     steps:
-      - name: checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Checkout Arduino Lib Parser
+        uses: actions/checkout@v4
+        with:
+          repository: emakefun-arduino-library/arduino_lib_parser
+          path: arduino_lib_parser
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -24,13 +29,13 @@ jobs:
       - name: get lib dir name
         id: get_lib_dir_name
         run: |
-          LIB_DIR_NAME=$(python script/get_lib_dir_name.py)
+          LIB_DIR_NAME=$(python arduino_lib_parser/get_lib_dir_name.py .)
           echo "lib_dir_name=${LIB_DIR_NAME}"
           echo "lib_dir_name=${LIB_DIR_NAME}" >> "$GITHUB_OUTPUT"
       - name: get examples
         id: get_examples
         run: |
-          EXAMPLES=$(python script/get_examples.py)
+          EXAMPLES=$(python arduino_lib_parser/get_examples.py .)
           echo "examples=${EXAMPLES}"
           echo "examples=${EXAMPLES}" >> "$GITHUB_OUTPUT"
 
@@ -45,7 +50,7 @@ jobs:
     strategy:
       matrix:
         example: ${{fromJSON(needs.get_lib_info.outputs.examples)}}
-        fqbn: ["esp32:esp32:esp32"]
+        fqbn: ["esp32:esp32:esp32", "esp32:esp32:esp32s3"]
 
     steps:
       - name: download arduino cli
