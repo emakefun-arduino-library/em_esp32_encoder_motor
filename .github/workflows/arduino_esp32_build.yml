@@ -50,7 +50,7 @@ jobs:
     strategy:
       matrix:
         example: ${{fromJSON(needs.get_lib_info.outputs.examples)}}
-        fqbn: ["esp32:esp32:esp32", "esp32:esp32:esp32s3"]
+        fqbn: ["esp32:esp32:esp32"]
 
     steps:
       - name: download arduino cli
