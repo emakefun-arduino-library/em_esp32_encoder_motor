@@ -41,14 +41,14 @@ var NAVTREE =
     ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Downloads", "usergroup0.html", [
-      [ "Download Library: Emakefun_Encoder_Motor_v1.0.3.zip", "../Emakefun_Encoder_Motor_v1.0.3.zip", null ]
+      [ "Download Library: Emakefun_Encoder_Motor_v1.0.4.zip", "../Emakefun_Encoder_Motor_v1.0.4.zip", null ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"../Emakefun_Encoder_Motor_v1.0.3.zip"
+"../Emakefun_Encoder_Motor_v1.0.4.zip"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

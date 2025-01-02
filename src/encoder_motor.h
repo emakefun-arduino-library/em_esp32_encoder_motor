@@ -162,7 +162,7 @@ class EncoderMotor {
    * @param[out] d Pointer used to get the value of the Derivative coefficient (D). After the function is executed, the memory
    * location pointed to by this pointer will store the corresponding parameter value.
    */
-  void GetSpeedPid(float* const p, float* const i, float* const d);
+  void GetSpeedPid(float* const p, float* const i, float* const d) const;
 
   /**
    * @~Chinese

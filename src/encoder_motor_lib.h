@@ -47,7 +47,7 @@ constexpr uint8_t kVersionMinor = 0;
  * @~English
  * @brief Patch version number.
  */
-constexpr uint8_t kVersionPatch = 3;
+constexpr uint8_t kVersionPatch = 4;
 
 /**
  * @~Chinese

@@ -70,7 +70,7 @@ void EncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
   }
 }
 
-void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) {
+void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) const {
   std::lock_guard<std::mutex> l(mutex_);
   if (p != nullptr) {
     *p = rpm_pid_.p;

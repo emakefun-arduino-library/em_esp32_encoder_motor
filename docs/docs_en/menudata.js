@@ -37,4 +37,4 @@ var menudata={children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"Download Library: Emakefun_Encoder_Motor_v1.0.3.zip",url:"../Emakefun_Encoder_Motor_v1.0.3.zip"}]}]}
+{text:"Download Library: Emakefun_Encoder_Motor_v1.0.4.zip",url:"../Emakefun_Encoder_Motor_v1.0.4.zip"}]}]}

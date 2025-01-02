@@ -37,4 +37,4 @@ var menudata={children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"下载库：Emakefun_Encoder_Motor_v1.0.3.zip",url:"../Emakefun_Encoder_Motor_v1.0.3.zip"}]}]}
+{text:"下载库：Emakefun_Encoder_Motor_v1.0.4.zip",url:"../Emakefun_Encoder_Motor_v1.0.4.zip"}]}]}

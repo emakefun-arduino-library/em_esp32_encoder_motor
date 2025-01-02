@@ -41,14 +41,14 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "下载库：Emakefun_Encoder_Motor_v1.0.3.zip", "../Emakefun_Encoder_Motor_v1.0.3.zip", null ]
+      [ "下载库：Emakefun_Encoder_Motor_v1.0.4.zip", "../Emakefun_Encoder_Motor_v1.0.4.zip", null ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"../Emakefun_Encoder_Motor_v1.0.3.zip"
+"../Emakefun_Encoder_Motor_v1.0.4.zip"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
