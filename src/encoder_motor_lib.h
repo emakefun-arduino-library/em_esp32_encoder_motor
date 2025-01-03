@@ -7,14 +7,6 @@
  * @file encoder_motor_lib.h
  */
 
-/**
- * @mainpage
- * @~Chinese
- * - Github链接： https://github.com/emakefun-arduino-library/em_esp32_encoder_motor
- * @~English
- * - Github link: https://github.com/emakefun-arduino-library/em_esp32_encoder_motor
- */
-
 #include <WString.h>
 
 namespace em {
@@ -37,7 +29,7 @@ constexpr uint8_t kVersionMajor = 1;
  * @~English
  * @brief Minor version number.
  */
-constexpr uint8_t kVersionMinor = 0;
+constexpr uint8_t kVersionMinor = 1;
 
 /**
  * @~Chinese
@@ -47,7 +39,7 @@ constexpr uint8_t kVersionMinor = 0;
  * @~English
  * @brief Patch version number.
  */
-constexpr uint8_t kVersionPatch = 4;
+constexpr uint8_t kVersionPatch = 0;
 
 /**
  * @~Chinese

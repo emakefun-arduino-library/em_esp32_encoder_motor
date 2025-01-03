@@ -24,18 +24,42 @@ constexpr float kDefaultSpeedD = 1.0;
 constexpr int32_t kDeadRpmZone = 10;
 }  // namespace
 
-EncoderMotor::EncoderMotor(const uint8_t pin_positive,
-                           const uint8_t pin_negative,
-                           const uint8_t pin_a,
-                           const uint8_t pin_b,
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+EncoderMotor::EncoderMotor(const uint8_t positive_pin,
+                           const uint8_t negative_pin,
+                           const uint8_t a_pin,
+                           const uint8_t b_pin,
                            const uint32_t ppr,
                            const uint32_t reduction_ration,
                            const PhaseRelation phase_relation)
-    : pin_a_(pin_a),
-      pin_b_(pin_b),
-      motor_driver_(pin_positive, pin_negative),
+    : pin_a_(a_pin),
+      pin_b_(b_pin),
+      motor_driver_(positive_pin, negative_pin),
       total_ppr_(ppr * reduction_ration),
-      b_level_at_a_falling_edge_(phase_relation == PhaseRelation::kAPhaseLeads ? HIGH : LOW) {
+      b_level_at_a_falling_edge_(phase_relation == PhaseRelation::kAPhaseLeads ? HIGH : LOW),
+      pulse_count_(0) {
+  rpm_pid_.p = kDefaultSpeedP;
+  rpm_pid_.i = kDefaultSpeedI;
+  rpm_pid_.d = kDefaultSpeedD;
+  rpm_pid_.max_integral = ceil(Motor::kMaxPwmDuty / rpm_pid_.i);
+}
+#endif
+
+EncoderMotor::EncoderMotor(const uint8_t positive_pin,
+                           const uint8_t positive_pin_ledc_channel,
+                           const uint8_t negative_pin,
+                           const uint8_t negative_pin_ledc_channel,
+                           const uint8_t a_pin,
+                           const uint8_t b_pin,
+                           const uint32_t ppr,
+                           const uint32_t reduction_ration,
+                           const PhaseRelation phase_relation)
+    : pin_a_(a_pin),
+      pin_b_(b_pin),
+      motor_driver_(positive_pin, positive_pin_ledc_channel, negative_pin, negative_pin_ledc_channel),
+      total_ppr_(ppr * reduction_ration),
+      b_level_at_a_falling_edge_(phase_relation == PhaseRelation::kAPhaseLeads ? HIGH : LOW),
+      pulse_count_(0) {
   rpm_pid_.p = kDefaultSpeedP;
   rpm_pid_.i = kDefaultSpeedI;
   rpm_pid_.d = kDefaultSpeedD;
@@ -43,7 +67,7 @@ EncoderMotor::EncoderMotor(const uint8_t pin_positive,
 }
 
 void EncoderMotor::Init() {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   if (update_rpm_thread_ != nullptr) {
     return;
   }
@@ -58,7 +82,7 @@ void EncoderMotor::Init() {
 }
 
 void EncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   rpm_pid_.p = p;
   rpm_pid_.i = i;
   rpm_pid_.d = d;
@@ -71,7 +95,7 @@ void EncoderMotor::SetSpeedPid(const float p, const float i, const float d) {
 }
 
 void EncoderMotor::GetSpeedPid(float* const p, float* const i, float* const d) const {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   if (p != nullptr) {
     *p = rpm_pid_.p;
   }
@@ -98,11 +122,11 @@ void EncoderMotor::RunPwmDuty(const int16_t duty) {
     return;
   }
 
-  motor_driver_.PwmDuty(duty);
+  motor_driver_.RunPwmDuty(duty);
 }
 
 void EncoderMotor::RunSpeed(const int16_t speed_rpm) {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   if (driving_thread_ == nullptr) {
     rpm_pid_.integral = 0;
     driving_thread_ = new std::thread(&EncoderMotor::Driving, this);
@@ -135,12 +159,12 @@ int32_t EncoderMotor::SpeedRpm() const {
 }
 
 int16_t EncoderMotor::PwmDuty() const {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   return motor_driver_.PwmDuty();
 }
 
 int32_t EncoderMotor::TargetRpm() const {
-  std::lock_guard<std::mutex> l(mutex_);
+  std::lock_guard<std::mutex> lock(mutex_);
   return target_speed_rpm_;
 }
 
@@ -157,7 +181,7 @@ void EncoderMotor::OnPinAFalling() {
 }
 
 void EncoderMotor::UpdateRpm() {
-  std::unique_lock lock(mutex_);
+  std::unique_lock<std::mutex> lock(mutex_);
   last_update_speed_time_ = std::chrono::system_clock::now();
   while (!condition_.wait_until(
       lock, last_update_speed_time_ + std::chrono::milliseconds(50), [this]() { return update_rpm_thread_ == nullptr; })) {
@@ -175,7 +199,7 @@ void EncoderMotor::UpdateRpm() {
 }
 
 void EncoderMotor::Driving() {
-  std::unique_lock lock(mutex_);
+  std::unique_lock<std::mutex> lock(mutex_);
 
   while (driving_thread_ != nullptr) {
     condition_.wait(lock, [this]() { return driving_thread_ == nullptr || drive_; });
@@ -185,12 +209,12 @@ void EncoderMotor::Driving() {
     }
 
     if (target_speed_rpm_ < kDeadRpmZone && target_speed_rpm_ > -kDeadRpmZone) {
-      motor_driver_.PwmDuty(0);
+      motor_driver_.RunPwmDuty(0);
     } else {
       const float speed_error = target_speed_rpm_ - speed_rpm_;
       rpm_pid_.integral = constrain(rpm_pid_.integral + speed_error, -rpm_pid_.max_integral, rpm_pid_.max_integral);
       const int16_t duty = round(rpm_pid_.p * speed_error + rpm_pid_.i * rpm_pid_.integral);
-      motor_driver_.PwmDuty(duty);
+      motor_driver_.RunPwmDuty(duty);
     }
     drive_ = false;
   }
@@ -198,7 +222,12 @@ void EncoderMotor::Driving() {
 
 void EncoderMotor::DeleteThread(std::thread*& thread) {
   if (thread != nullptr) {
+#if __cplusplus >= 201402L
     const auto temp = std::exchange(thread, nullptr);
+#else
+    const auto temp = thread;
+    thread = nullptr;
+#endif
     condition_.notify_all();
     mutex_.unlock();
     temp->join();

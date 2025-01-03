@@ -9,11 +9,14 @@
 
 #include <WString.h>
 
+#include <atomic>
 #include <chrono>
 #include <condition_variable>
 #include <cstdint>
+#include <mutex>
 #include <thread>
 
+#include "esp_arduino_version.h"
 #include "motor.h"
 
 /**
@@ -81,13 +84,16 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 构造函数，用于创建一个 EncoderMotor 对象。
+   * @note 该构造函数仅在ESP32 Arduino Core版本大于等于3.0.0时有效，3.0.0以下版本请使用 @ref EncoderMotor(const uint8_t,
+   * const uint8_t, const uint8_t, const uint8_t, const uint8_t, const uint8_t, const uint32_t, const uint32_t, const
+   * PhaseRelation)
    * @param[in] positive_pin 电机正极引脚编号。
    * @param[in] negative_pin 电机负极引脚编号。
    * @param[in] a_pin 编码器A相引脚编号。
    * @param[in] b_pin 编码器B相引脚编号。
    * @param[in] ppr 每转脉冲数。
    * @param[in] reduction_ration 减速比。
-   * @param[in] phase_relation 相位关系（A相领先或B相领先，指电机正转时的情况），@ref PhaseRelation。
+   * @param[in] phase_relation 相位关系（A相领先或B相领先，指电机正转时的情况），参数说明请查阅： @ref PhaseRelation 。
    * @details
    * 如果用户不清楚自己所使用的编码电机的phase_relation参数具体取值，可以使用示例程序 @ref detect_phase_relation.ino
    * 来帮助检测确定该参数的值。
@@ -95,6 +101,9 @@ class EncoderMotor {
   /**
    * @~English
    * @brief Constructor for creating an EncoderMotor object.
+   * @note This constructor is only valid when the ESP32 Arduino Core version is greater than or equal to 3.0.0. For versions
+   * below 3.0.0, please use @ref EncoderMotor(const uint8_t, const uint8_t, const uint8_t, const uint8_t, const uint8_t, const
+   * uint8_t, const uint32_t, const uint32_t, const PhaseRelation)
    * @param[in] positive_pin The pin number of the motor's positive pole.
    * @param[in] negative_pin The pin number of the motor's negative pole.
    * @param[in] a_pin The pin number of the encoder's A phase.
@@ -109,6 +118,69 @@ class EncoderMotor {
    */
   EncoderMotor(const uint8_t positive_pin,
                const uint8_t negative_pin,
+               const uint8_t a_pin,
+               const uint8_t b_pin,
+               const uint32_t ppr,
+               const uint32_t reduction_ration,
+               const PhaseRelation phase_relation);
+  /**
+   * @~Chinese
+   * @brief 构造函数，用于创建一个 EncoderMotor 对象。
+   * @note 此类会使用ESP32的LED Control (LEDC)产生PWM波形驱动电机，在ESP32 Arduino Core版本小于3.0.0时，ESP32 Arduino
+   * Core不会管理LEDC通道，需要用户指定每个引脚对应的LEDC通道，
+   * 所以必须使用该构造函数构造对象，并指定电机正负极引脚对应的LEDC通道，每个pin只能对应一个LEDC通道，请勿重复使用LEDC通道，关于LEDC的说明请查阅官网：
+   * @ref https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] positive_pin 电机正极引脚编号。
+   * @param[in] positive_pin_ledc_channel 电机正极引脚对应的LED Control
+   * (LEDC)通道，共16个，范围0~15，每个pin只能对应一个通道，详情请查阅官方文档： @ref
+   * https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] negative_pin 电机负极引脚编号。
+   * @param[in] negative_pin_ledc_channel 电机负极引脚对应的LED Control
+   * (LEDC)通道，共16个，范围0~15，每个pin只能对应一个通道，详情请查阅官方文档： @ref
+   * https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] a_pin 编码器A相引脚编号。
+   * @param[in] b_pin 编码器B相引脚编号。
+   * @param[in] ppr 每转脉冲数。
+   * @param[in] reduction_ration 减速比。
+   * @param[in] phase_relation 相位关系（A相领先或B相领先，指电机正转时的情况），参数说明请查阅： @ref PhaseRelation 。
+   * @details
+   * 如果用户不清楚自己所使用的编码电机的phase_relation参数具体取值，可以使用示例程序 @ref detect_phase_relation.ino
+   * 来帮助检测确定该参数的值。
+   */
+  /**
+   * @~English
+   * @brief Constructor for creating an EncoderMotor object.
+   * @note This class will use the LED Control (LEDC) of ESP32 to generate PWM waveforms to driver the motor. When the ESP32
+   * Arduino Core version is less than 3.0.0, the ESP32 Arduino Core will not manage the LEDC channels, and the user needs to
+   * specify the LEDC channels corresponding to each pin. Therefore, it is necessary to use this constructor to construct the
+   * object and specify the LEDC channels corresponding to the positive and negative pins of the motor. Each pin can only
+   * correspond to one LEDC channel, and please do not reuse the LEDC channels. For the description of LEDC, please refer to the
+   * official website:
+   * @ref https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] positive_pin The pin number of the motor's positive pole.
+   * @param[in] positive_pin_ledc_channel The LED Control (LEDC) channel corresponding to the motor's positive pole pin, which
+   * has a total of 16 channels ranging from 0 to 15. Each pin can only correspond to one channel and is used to configure
+   * functions such as the PWM (Pulse Width Modulation) signal related to the positive pole pin of the motor. For more details,
+   * please refer to the official documentation: @ref https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] negative_pin The pin number of the motor's negative pole.
+   * @param[in] negative_pin_ledc_channel The LED Control (LEDC) channel corresponding to the motor's negative pole pin, which
+   * has a total of 16 channels ranging from 0 to 15. Each pin can only correspond to one channel and is used to configure
+   * functions such as the PWM (Pulse Width Modulation) signal related to the negative pole pin of the motor. For more details,
+   * please refer to the official documentation: @ref https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html
+   * @param[in] a_pin The pin number of the encoder's A phase.
+   * @param[in] b_pin The pin number of the encoder's B phase.
+   * @param[in] ppr Pulses per revolution.
+   * @param[in] reduction_ration Reduction ratio.
+   * @param[in] phase_relation Phase relationship (A phase leads or B phase leads, referring to the situation when the motor is
+   * rotating forward), @ref PhaseRelation.
+   * @details
+   * If the user is unsure about the value of the phase_relation parameter for the encoded motor they are using, they
+   * can use the example program @ref detect_phase_relation.ino to help detect and determine the value of this parameter.
+   */
+  EncoderMotor(const uint8_t positive_pin,
+               const uint8_t positive_pin_ledc_channel,
+               const uint8_t negative_pin,
+               const uint8_t negative_pin_ledc_channel,
                const uint8_t a_pin,
                const uint8_t b_pin,
                const uint32_t ppr,
@@ -277,7 +349,7 @@ class EncoderMotor {
   const uint8_t b_level_at_a_falling_edge_ = 0;
   Pid rpm_pid_;
   int64_t previous_pulse_count_ = 0;
-  std::atomic<int64_t> pulse_count_ = 0;
+  std::atomic<int64_t> pulse_count_;
   std::chrono::system_clock::time_point last_update_speed_time_ = std::chrono::time_point<std::chrono::system_clock>::min();
   int32_t speed_rpm_ = 0;
   int32_t target_speed_rpm_ = 0.0;

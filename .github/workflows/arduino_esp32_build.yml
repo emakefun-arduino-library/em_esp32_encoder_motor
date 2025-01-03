@@ -50,6 +50,7 @@ jobs:
     strategy:
       matrix:
         example: ${{fromJSON(needs.get_lib_info.outputs.examples)}}
+        core_version: ["3.0.7", "2.0.7"]
         fqbn: ["esp32:esp32:esp32"]
 
     steps:
@@ -67,7 +68,7 @@ jobs:
           ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config set directories.user ${ARDUINO_USER_DIR}
           ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config set library.enable_unsafe_install true
           ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} config dump
-          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} core install esp32:esp32
+          ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} core install esp32:esp32@${{matrix.core_version}}
       - name: install lib
         run: |
           ${ARDUINO_CLI_DIR}/arduino-cli --config-dir ${ARDUINO_CLI_CONFIG_DIR} lib install --git-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
