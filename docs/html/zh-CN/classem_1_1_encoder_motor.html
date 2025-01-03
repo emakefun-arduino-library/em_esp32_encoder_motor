@@ -126,7 +126,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a7a081b178eb21b9ae2b73350c51f7d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_encoder_motor.html" title="编码电机驱动类">EncoderMotor</a> 对象。  <br /></td></tr>
 <tr class="separator:a7a081b178eb21b9ae2b73350c51f7d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12e18423baa47264af3960c120dcea6f" id="r_a12e18423baa47264af3960c120dcea6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12e18423baa47264af3960c120dcea6f">Init</a> ()</td></tr>
-<tr class="memdesc:a12e18423baa47264af3960c120dcea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。  <br /></td></tr>
+<tr class="memdesc:a12e18423baa47264af3960c120dcea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化。  <br /></td></tr>
 <tr class="separator:a12e18423baa47264af3960c120dcea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e833aafb82e8a610dbb60700e3a1a8e" id="r_a8e833aafb82e8a610dbb60700e3a1a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e833aafb82e8a610dbb60700e3a1a8e">SetSpeedPid</a> (const float p, const float i, const float d)</td></tr>
 <tr class="memdesc:a8e833aafb82e8a610dbb60700e3a1a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用给定的比例（P）、积分（I）、微分（D）参数值来设置速度PID控制器的参数。  <br /></td></tr>
@@ -432,7 +432,7 @@ PhaseRelation)</a> </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>初始化电机设置。 </p>
+<p>初始化。 </p>
 
 <p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00069">69</a> 行定义.</p>
 
@@ -454,7 +454,7 @@ PhaseRelation)</a> </dd></dl>
 </div><div class="memdoc">
 
 <p>获取电机驱动器的PWM占空比。 </p>
-<dl class="section return"><dt>返回</dt><dd>电机驱动器的PWM占空比。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。 </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00161">161</a> 行定义.</p>
 
@@ -478,7 +478,7 @@ PhaseRelation)</a> </dd></dl>
 <p>直接设置电机的PWM占空比。 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM占空比（取值范围 -1023到1023）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。 </td></tr>
   </table>
   </dd>
 </dl>

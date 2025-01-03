@@ -9,7 +9,6 @@
 
 #include <WString.h>
 
-#include <cmath>
 #include <cstdint>
 
 #include "esp_arduino_version.h"
@@ -30,7 +29,7 @@ class Motor {
   /**
    * @~Chinese
    * @brief PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。
-   * /
+   */
   /**
    * @~English
    * @brief The resolution of PWM, which determines the fine-tuning level of the PWM duty cycle, in bits. Here it is set to 10
@@ -40,6 +39,8 @@ class Motor {
   /**
    * @~Chinese
    * @brief PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。
+   */
+  /**
    * @~English
    * @brief The frequency of PWM, in Hertz. Here it is set to 75000 Hz, used to control the frequency of the PWM signal for
    * motor driving.
@@ -49,17 +50,13 @@ class Motor {
   static_assert(kPwmResolution > 1);
   /**
    * @~Chinese
-   * @brief 根据PWM分辨率计算出的最大PWM占空比数值，通过公式 \(2^{PWM分辨率} - 1\) 得出。
-   * @~English
-   * @brief The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula \(2^{PWM分辨率} -
-   * 1\).
-   */  /**
-   * @~Chinese
-   * @brief 根据PWM分辨率计算出的最大PWM占空比数值，通过公式 \(2^{PWM分辨率} - 1\) 得出。
-   * @~English
-   * @brief The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula \(2^{PWM分辨率} - 1\).
+   * @brief 根据PWM分辨率计算出的最大PWM占空比数值。
    */
-  static constexpr int16_t kMaxPwmDuty = pow(2, kPwmResolution) - 1;
+  /**
+   * @~English
+   * @brief The maximum PWM duty cycle value calculated based on the PWM resolution.
+   */
+  static constexpr int16_t kMaxPwmDuty = (1 << kPwmResolution) - 1;
 
   /**
    * @~Chinese
@@ -125,35 +122,37 @@ class Motor {
 
   /**
    * @~Chinese
-   * @brief 初始化电机设置。
+   * @brief 初始化。
    */
   /**
    * @~English
-   * @brief Initialize motor settings.
+   * @brief Initialize.
    */
   void Init();
 
   /**
    * @~Chinese
    * @brief 直接设置电机的PWM占空比。
-   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。
+   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。
    */
   /**
    * @~English
    * @brief Set motor PWM directly.
-   * @param[in] pwm_duty PWM duty cycle (-1023 to 1023).
+   * @param[in] pwm_duty The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward
+   * rotation, and a negative number represents reverse rotation.
    */
   void RunPwmDuty(const int16_t pwm_duty);
 
   /**
    * @~Chinese
    * @brief 获取电机驱动器的PWM占空比。
-   * @return 电机驱动器的PWM占空比。
+   * @return PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。
    */
   /**
    * @~English
    * @brief Get the PWM pwm_duty cycle of the motor driver.
-   * @return The PWM pwm_duty cycle of the motor driver.
+   * @return The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward
+   * rotation, and a negative number represents reverse rotation.
    */
   int16_t PwmDuty() const;
 

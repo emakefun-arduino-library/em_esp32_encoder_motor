@@ -118,7 +118,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a21a2ee299094c0f5562059828200638a"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，用于创建一个 <a class="el" href="classem_1_1_motor.html" title="两路PWM电机驱动类">Motor</a> 对象。  <br /></td></tr>
 <tr class="separator:a21a2ee299094c0f5562059828200638a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe4bd6dfe7f8c6e327437b061373597" id="r_adfe4bd6dfe7f8c6e327437b061373597"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfe4bd6dfe7f8c6e327437b061373597">Init</a> ()</td></tr>
-<tr class="memdesc:adfe4bd6dfe7f8c6e327437b061373597"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机设置。  <br /></td></tr>
+<tr class="memdesc:adfe4bd6dfe7f8c6e327437b061373597"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化。  <br /></td></tr>
 <tr class="separator:adfe4bd6dfe7f8c6e327437b061373597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6526167c433ea4ddd3ee690c0ea9fa23" id="r_a6526167c433ea4ddd3ee690c0ea9fa23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6526167c433ea4ddd3ee690c0ea9fa23">RunPwmDuty</a> (const int16_t pwm_duty)</td></tr>
 <tr class="memdesc:a6526167c433ea4ddd3ee690c0ea9fa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">直接设置电机的PWM占空比。  <br /></td></tr>
@@ -133,13 +133,13 @@ Public 成员函数</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
 <tr class="memitem:a182d4dcd83fa90f2e7a662040b0a03b5" id="r_a182d4dcd83fa90f2e7a662040b0a03b5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a> = 10</td></tr>
-<tr class="memdesc:a182d4dcd83fa90f2e7a662040b0a03b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 / /**  <br /></td></tr>
+<tr class="memdesc:a182d4dcd83fa90f2e7a662040b0a03b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。  <br /></td></tr>
 <tr class="separator:a182d4dcd83fa90f2e7a662040b0a03b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8896242118d010267612ab03c1847a4" id="r_ae8896242118d010267612ab03c1847a4"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8896242118d010267612ab03c1847a4">kPwmFrequency</a> = 75000</td></tr>
 <tr class="memdesc:ae8896242118d010267612ab03c1847a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。  <br /></td></tr>
 <tr class="separator:ae8896242118d010267612ab03c1847a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a329178a1c6fb0b5c71c43fc951247b" id="r_a6a329178a1c6fb0b5c71c43fc951247b"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a329178a1c6fb0b5c71c43fc951247b">kMaxPwmDuty</a> = pow(2, <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td></tr>
-<tr class="memdesc:a6a329178a1c6fb0b5c71c43fc951247b"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。  <br /></td></tr>
+<tr class="memitem:a6a329178a1c6fb0b5c71c43fc951247b" id="r_a6a329178a1c6fb0b5c71c43fc951247b"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a329178a1c6fb0b5c71c43fc951247b">kMaxPwmDuty</a> = (1 &lt;&lt; <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td></tr>
+<tr class="memdesc:a6a329178a1c6fb0b5c71c43fc951247b"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据PWM分辨率计算出的最大PWM占空比数值。  <br /></td></tr>
 <tr class="separator:a6a329178a1c6fb0b5c71c43fc951247b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -147,7 +147,7 @@ Public 成员函数</h2></td></tr>
 <dl class="section examples"><dt>示例</dt><dd><a class="el" href="drive_dc_motor_8ino-example.html#_a0">drive_dc_motor.ino</a>.</dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00028">28</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00027">27</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="a9ebd66b5e123093a62d857af324b89e2" name="a9ebd66b5e123093a62d857af324b89e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ebd66b5e123093a62d857af324b89e2">&#9670;&#160;</a></span>Motor() <span class="overload">[1/2]</span></h2>
@@ -260,7 +260,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>初始化电机设置。 </p>
+<p>初始化。 </p>
 
 <p class="definition">在文件 <a class="el" href="motor_8cpp_source.html">motor.cpp</a> 第 <a class="el" href="motor_8cpp_source.html#l00027">27</a> 行定义.</p>
 
@@ -282,7 +282,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
 </div><div class="memdoc">
 
 <p>获取电机驱动器的PWM占空比。 </p>
-<dl class="section return"><dt>返回</dt><dd>电机驱动器的PWM占空比。 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。 </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="motor_8cpp_source.html">motor.cpp</a> 第 <a class="el" href="motor_8cpp_source.html#l00070">70</a> 行定义.</p>
 
@@ -306,7 +306,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
 <p>直接设置电机的PWM占空比。 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM占空比（取值范围 -1023到1023）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -347,7 +347,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t em::Motor::kMaxPwmDuty = pow(2, <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td>
+          <td class="memname">int16_t em::Motor::kMaxPwmDuty = (1 &lt;&lt; <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td>
         </tr>
       </table>
   </td>
@@ -357,10 +357,9 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。 </p>
-<p>根据PWM分辨率计算出的最大PWM占空比数值，通过公式 (2^{PWM分辨率} - 1) 得出。 </p>
+<p>根据PWM分辨率计算出的最大PWM占空比数值。 </p>
 
-<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00062">62</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00059">59</a> 行定义.</p>
 
 </div>
 </div>
@@ -386,7 +385,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
 
 <p>PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。 </p>
 
-<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00047">47</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00048">48</a> 行定义.</p>
 
 </div>
 </div>
@@ -410,9 +409,9 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p>PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 / /** </p>
+<p>PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。 </p>
 
-<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00039">39</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="motor_8h_source.html">motor.h</a> 第 <a class="el" href="motor_8h_source.html#l00038">38</a> 行定义.</p>
 
 </div>
 </div>

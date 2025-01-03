@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7a081b178eb21b9ae2b73350c51f7d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for creating an <a class="el" href="classem_1_1_encoder_motor.html" title="Encoder Motor Class.">EncoderMotor</a> object.  <br /></td></tr>
 <tr class="separator:a7a081b178eb21b9ae2b73350c51f7d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12e18423baa47264af3960c120dcea6f" id="r_a12e18423baa47264af3960c120dcea6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12e18423baa47264af3960c120dcea6f">Init</a> ()</td></tr>
-<tr class="memdesc:a12e18423baa47264af3960c120dcea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize motor settings.  <br /></td></tr>
+<tr class="memdesc:a12e18423baa47264af3960c120dcea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize.  <br /></td></tr>
 <tr class="separator:a12e18423baa47264af3960c120dcea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e833aafb82e8a610dbb60700e3a1a8e" id="r_a8e833aafb82e8a610dbb60700e3a1a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e833aafb82e8a610dbb60700e3a1a8e">SetSpeedPid</a> (const float p, const float i, const float d)</td></tr>
 <tr class="memdesc:a8e833aafb82e8a610dbb60700e3a1a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameters of the speed PID controller with the given Proportional (P), Integral (I), and Derivative (D) parameter values.  <br /></td></tr>
@@ -431,7 +431,7 @@ uint8_t, const uint32_t, const uint32_t, const PhaseRelation)</a> </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize motor settings. </p>
+<p>Initialize. </p>
 
 <p class="definition">Definition at line <a class="el" href="encoder__motor_8cpp_source.html#l00069">69</a> of file <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a>.</p>
 
@@ -453,7 +453,7 @@ uint8_t, const uint32_t, const uint32_t, const PhaseRelation)</a> </dd></dl>
 </div><div class="memdoc">
 
 <p>Get the PWM pwm_duty cycle of the motor driver. </p>
-<dl class="section return"><dt>Returns</dt><dd>The PWM pwm_duty cycle of the motor driver. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward rotation, and a negative number represents reverse rotation. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="encoder__motor_8cpp_source.html#l00161">161</a> of file <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a>.</p>
 
@@ -477,7 +477,7 @@ uint8_t, const uint32_t, const uint32_t, const PhaseRelation)</a> </dd></dl>
 <p>Set motor PWM directly. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM duty cycle (-1023 to 1023). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward rotation, and a negative number represents reverse rotation. </td></tr>
   </table>
   </dd>
 </dl>

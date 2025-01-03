@@ -118,7 +118,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a21a2ee299094c0f5562059828200638a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for creating an <a class="el" href="classem_1_1_motor.html" title="A two-channel PWM motor driver class.">Motor</a> object.  <br /></td></tr>
 <tr class="separator:a21a2ee299094c0f5562059828200638a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfe4bd6dfe7f8c6e327437b061373597" id="r_adfe4bd6dfe7f8c6e327437b061373597"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfe4bd6dfe7f8c6e327437b061373597">Init</a> ()</td></tr>
-<tr class="memdesc:adfe4bd6dfe7f8c6e327437b061373597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize motor settings.  <br /></td></tr>
+<tr class="memdesc:adfe4bd6dfe7f8c6e327437b061373597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize.  <br /></td></tr>
 <tr class="separator:adfe4bd6dfe7f8c6e327437b061373597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6526167c433ea4ddd3ee690c0ea9fa23" id="r_a6526167c433ea4ddd3ee690c0ea9fa23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6526167c433ea4ddd3ee690c0ea9fa23">RunPwmDuty</a> (const int16_t pwm_duty)</td></tr>
 <tr class="memdesc:a6526167c433ea4ddd3ee690c0ea9fa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set motor PWM directly.  <br /></td></tr>
@@ -138,8 +138,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae8896242118d010267612ab03c1847a4" id="r_ae8896242118d010267612ab03c1847a4"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8896242118d010267612ab03c1847a4">kPwmFrequency</a> = 75000</td></tr>
 <tr class="memdesc:ae8896242118d010267612ab03c1847a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The frequency of PWM, in Hertz. Here it is set to 75000 Hz, used to control the frequency of the PWM signal for motor driving.  <br /></td></tr>
 <tr class="separator:ae8896242118d010267612ab03c1847a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a329178a1c6fb0b5c71c43fc951247b" id="r_a6a329178a1c6fb0b5c71c43fc951247b"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a329178a1c6fb0b5c71c43fc951247b">kMaxPwmDuty</a> = pow(2, <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td></tr>
-<tr class="memdesc:a6a329178a1c6fb0b5c71c43fc951247b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula (2^{PWM分辨率} - 1).  <br /></td></tr>
+<tr class="memitem:a6a329178a1c6fb0b5c71c43fc951247b" id="r_a6a329178a1c6fb0b5c71c43fc951247b"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a329178a1c6fb0b5c71c43fc951247b">kMaxPwmDuty</a> = (1 &lt;&lt; <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td></tr>
+<tr class="memdesc:a6a329178a1c6fb0b5c71c43fc951247b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum PWM duty cycle value calculated based on the PWM resolution.  <br /></td></tr>
 <tr class="separator:a6a329178a1c6fb0b5c71c43fc951247b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -147,7 +147,7 @@ Static Public Attributes</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="drive_dc_motor_8ino-example.html#_a0">drive_dc_motor.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00028">28</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00027">27</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9ebd66b5e123093a62d857af324b89e2" name="a9ebd66b5e123093a62d857af324b89e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ebd66b5e123093a62d857af324b89e2">&#9670;&#160;</a></span>Motor() <span class="overload">[1/2]</span></h2>
@@ -259,7 +259,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize motor settings. </p>
+<p>Initialize. </p>
 
 <p class="definition">Definition at line <a class="el" href="motor_8cpp_source.html#l00027">27</a> of file <a class="el" href="motor_8cpp_source.html">motor.cpp</a>.</p>
 
@@ -281,7 +281,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the PWM pwm_duty cycle of the motor driver. </p>
-<dl class="section return"><dt>Returns</dt><dd>The PWM pwm_duty cycle of the motor driver. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward rotation, and a negative number represents reverse rotation. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="motor_8cpp_source.html#l00070">70</a> of file <a class="el" href="motor_8cpp_source.html">motor.cpp</a>.</p>
 
@@ -305,7 +305,7 @@ Static Public Attributes</h2></td></tr>
 <p>Set motor PWM directly. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>PWM duty cycle (-1023 to 1023). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwm_duty</td><td>The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward rotation, and a negative number represents reverse rotation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -346,7 +346,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t em::Motor::kMaxPwmDuty = pow(2, <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td>
+          <td class="memname">int16_t em::Motor::kMaxPwmDuty = (1 &lt;&lt; <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td>
         </tr>
       </table>
   </td>
@@ -356,10 +356,9 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula (2^{PWM分辨率} - 1). </p>
-<p>The maximum PWM duty cycle value calculated based on the PWM resolution, obtained by the formula (2^{PWM分辨率} - 1). </p>
+<p>The maximum PWM duty cycle value calculated based on the PWM resolution. </p>
 
-<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00062">62</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00059">59</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +384,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>The frequency of PWM, in Hertz. Here it is set to 75000 Hz, used to control the frequency of the PWM signal for motor driving. </p>
 
-<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00047">47</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00048">48</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
 
 </div>
 </div>
@@ -411,7 +410,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>The resolution of PWM, which determines the fine-tuning level of the PWM duty cycle, in bits. Here it is set to 10 bits. </p>
 
-<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00039">39</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="motor_8h_source.html#l00038">38</a> of file <a class="el" href="motor_8h_source.html">motor.h</a>.</p>
 
 </div>
 </div>

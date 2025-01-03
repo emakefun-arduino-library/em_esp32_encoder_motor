@@ -191,11 +191,11 @@ class EncoderMotor {
 
   /**
    * @~Chinese
-   * @brief 初始化电机设置。
+   * @brief 初始化。
    */
   /**
    * @~English
-   * @brief Initialize motor settings.
+   * @brief Initialize.
    */
   void Init();
 
@@ -239,12 +239,13 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 直接设置电机的PWM占空比。
-   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。
+   * @param[in] pwm_duty PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。
    */
   /**
    * @~English
    * @brief Set motor PWM directly.
-   * @param[in] pwm_duty PWM duty cycle (-1023 to 1023).
+   * @param[in] pwm_duty The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward
+   * rotation, and a negative number represents reverse rotation.
    */
   void RunPwmDuty(const int16_t pwm_duty);
 
@@ -298,12 +299,13 @@ class EncoderMotor {
   /**
    * @~Chinese
    * @brief 获取电机驱动器的PWM占空比。
-   * @return 电机驱动器的PWM占空比。
+   * @return PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。
    */
   /**
    * @~English
    * @brief Get the PWM pwm_duty cycle of the motor driver.
-   * @return The PWM pwm_duty cycle of the motor driver.
+   * @return The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward
+   * rotation, and a negative number represents reverse rotation.
    */
   int16_t PwmDuty() const;
 
