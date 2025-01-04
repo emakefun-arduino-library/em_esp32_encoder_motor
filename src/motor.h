@@ -139,7 +139,8 @@ class Motor {
    * @~English
    * @brief Set motor PWM directly.
    * @param[in] pwm_duty The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward
-   * rotation, and a negative number represents reverse rotation.
+   * rotation, and a negative number represents revers
+   * e rotation.
    */
   void RunPwmDuty(const int16_t pwm_duty);
 

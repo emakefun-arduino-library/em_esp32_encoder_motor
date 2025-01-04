@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Emakefun Encoder Motor", "index.html", [
+  [ "Emakefun Encoder Motor Arduino Lib", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
