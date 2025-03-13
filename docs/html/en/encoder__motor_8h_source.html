@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun Encoder Motor Arduino Lib<span id="projectnumber">&#160;1.1.0</span>
+   <div id="projectname">Emakefun Encoder Motor Arduino Lib<span id="projectnumber">&#160;1.1.1</span>
    </div>
   </td>
  </tr>
@@ -390,96 +390,107 @@ $(function(){initNavTree('encoder__motor_8h_source.html',''); initResizable(true
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span><span class="comment"></span> </div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="comment">  /**</span></div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">   * @brief 获取电机当前的转速（RPM）。</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">   * @return 电机当前的转速（RPM）。</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="comment">   * @brief Get the current speed of the motor.</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="comment">   * @return The current speed of the motor in RPM.</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>  int32_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#ae03160a42fcd772dc2455a7b530e488e">SpeedRpm</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment"></span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">   * @brief 获取电机驱动器的PWM占空比。</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">   * @return PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="comment">   * @brief Get the PWM pwm_duty cycle of the motor driver.</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span><span class="comment">   * @return The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward</span></div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="comment">   * rotation, and a negative number represents reverse rotation.</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>  int16_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5">PwmDuty</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="comment"></span> </div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment">   * @~Chinese</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="comment">   * @brief 获取电机的目标转速（RPM）。</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="comment">   * @return 电机的目标转速（RPM）。</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment">   */</span><span class="comment"></span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="comment">  /**</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="comment">   * @~English</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="comment">   * @brief Get the target speed of the motor in RPM.</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment">   * @return The target speed of the motor in RPM.</span></div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  int32_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#a8e41301b0622532cc66c59cfeb56684a">TargetRpm</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>  <span class="keyword">static</span> <span class="keywordtype">void</span> OnPinAFalling(<span class="keywordtype">void</span>* self);</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keywordtype">void</span> OnPinAFalling();</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keywordtype">void</span> UpdateRpm();</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>  <span class="keywordtype">void</span> Driving();</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>  <span class="keywordtype">void</span> DeleteThread(std::thread*&amp; thread);</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>  <span class="keyword">struct </span>Pid {</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keywordtype">float</span> p = 0.0;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordtype">float</span> i = 0.0;</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <span class="keywordtype">float</span> d = 0.0;</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="keywordtype">float</span> integral = 0.0;</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordtype">float</span> max_integral = 0.0;</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  };</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="comment">   * @brief 重置编码器脉冲计数为0</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span><span class="comment">   * @brief Reset the encoder pulse count to 0</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classem_1_1_encoder_motor.html#a5495b6cc8283ee6846538b70ef09cfd0">ResetPulseCount</a>();</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="comment"></span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="comment">   * @brief 获取电机当前的转速（RPM）。</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="comment">   * @return 电机当前的转速（RPM）。</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="comment">   * @brief Get the current speed of the motor.</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="comment">   * @return The current speed of the motor in RPM.</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>  int32_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#ae03160a42fcd772dc2455a7b530e488e">SpeedRpm</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span><span class="comment"></span> </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span><span class="comment">   * @brief 获取电机驱动器的PWM占空比。</span></div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="comment">   * @return PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment">   * @brief Get the PWM pwm_duty cycle of the motor driver.</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="comment">   * @return The duty cycle of PWM (the value range is from -1023 to 1023). A positive number represents forward</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="comment">   * rotation, and a negative number represents reverse rotation.</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  int16_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5">PwmDuty</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="comment"></span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="comment">   * @~Chinese</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="comment">   * @brief 获取电机的目标转速（RPM）。</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="comment">   * @return 电机的目标转速（RPM）。</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">   */</span><span class="comment"></span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="comment">   * @~English</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="comment">   * @brief Get the target speed of the motor in RPM.</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="comment">   * @return The target speed of the motor in RPM.</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  int32_t <a class="code hl_function" href="classem_1_1_encoder_motor.html#a8e41301b0622532cc66c59cfeb56684a">TargetRpm</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>  <span class="keyword">static</span> <span class="keywordtype">void</span> OnPinAFalling(<span class="keywordtype">void</span>* self);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  <span class="keywordtype">void</span> OnPinAFalling();</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>  <span class="keywordtype">void</span> UpdateRpm();</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  <span class="keywordtype">void</span> Driving();</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>  <span class="keyword">mutable</span> std::mutex mutex_;</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  std::condition_variable condition_;</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  std::thread* update_rpm_thread_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  std::thread* driving_thread_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>  Motor motor_driver_;</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  <span class="keyword">const</span> uint8_t pin_a_ = 0;</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>  <span class="keyword">const</span> uint8_t pin_b_ = 0;</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> total_ppr_ = 0;</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  <span class="keyword">const</span> uint8_t b_level_at_a_falling_edge_ = 0;</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>  Pid rpm_pid_;</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  int64_t previous_pulse_count_ = 0;</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>  std::atomic&lt;int64_t&gt; pulse_count_;</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>  std::chrono::system_clock::time_point last_update_speed_time_ = std::chrono::time_point&lt;std::chrono::system_clock&gt;::min();</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>  int32_t speed_rpm_ = 0;</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>  int32_t target_speed_rpm_ = 0.0;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  <span class="keywordtype">bool</span> drive_ = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>};</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>  <span class="keywordtype">void</span> DeleteThread(std::thread*&amp; thread);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  <span class="keyword">struct </span>Pid {</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keywordtype">float</span> p = 0.0;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordtype">float</span> i = 0.0;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordtype">float</span> d = 0.0;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="keywordtype">float</span> integral = 0.0;</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <span class="keywordtype">float</span> max_integral = 0.0;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  };</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <span class="keyword">mutable</span> std::mutex mutex_;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>  std::condition_variable condition_;</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>  std::thread* update_rpm_thread_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>  std::thread* driving_thread_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>  Motor motor_driver_;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  <span class="keyword">const</span> uint8_t pin_a_ = 0;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>  <span class="keyword">const</span> uint8_t pin_b_ = 0;</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  <span class="keyword">const</span> <span class="keywordtype">double</span> total_ppr_ = 0;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <span class="keyword">const</span> uint8_t b_level_at_a_falling_edge_ = 0;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  Pid rpm_pid_;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  int64_t previous_pulse_count_ = 0;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  std::atomic&lt;int64_t&gt; pulse_count_;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  std::chrono::system_clock::time_point last_update_speed_time_ = std::chrono::time_point&lt;std::chrono::system_clock&gt;::min();</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  int32_t speed_rpm_ = 0;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  int32_t target_speed_rpm_ = 0.0;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  <span class="keywordtype">bool</span> drive_ = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>};</div>
 </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>}  <span class="comment">// namespace em</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>}  <span class="comment">// namespace em</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html"><div class="ttname"><a href="classem_1_1_encoder_motor.html">em::EncoderMotor</a></div><div class="ttdoc">Encoder Motor Class.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">encoder_motor.h:50</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a12e18423baa47264af3960c120dcea6f"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a12e18423baa47264af3960c120dcea6f">em::EncoderMotor::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Initialize.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00069">encoder_motor.cpp:69</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a265c579b3e27e4cd11e88b47fec5f3b5"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a265c579b3e27e4cd11e88b47fec5f3b5">em::EncoderMotor::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">Stop motor.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00144">encoder_motor.cpp:144</a></div></div>
-<div class="ttc" id="aclassem_1_1_encoder_motor_html_a2b3c2fff560cf81991dc98c58023d3e5"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5">em::EncoderMotor::PwmDuty</a></div><div class="ttdeci">int16_t PwmDuty() const</div><div class="ttdoc">Get the PWM pwm_duty cycle of the motor driver.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00161">encoder_motor.cpp:161</a></div></div>
+<div class="ttc" id="aclassem_1_1_encoder_motor_html_a2b3c2fff560cf81991dc98c58023d3e5"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5">em::EncoderMotor::PwmDuty</a></div><div class="ttdeci">int16_t PwmDuty() const</div><div class="ttdoc">Get the PWM pwm_duty cycle of the motor driver.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00165">encoder_motor.cpp:165</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a3fdd02d1351ea0061a20e1dbe945b35c"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a3fdd02d1351ea0061a20e1dbe945b35c">em::EncoderMotor::RunSpeed</a></div><div class="ttdeci">void RunSpeed(const int16_t speed_rpm)</div><div class="ttdoc">Run motor at speed setpoint.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00128">encoder_motor.cpp:128</a></div></div>
+<div class="ttc" id="aclassem_1_1_encoder_motor_html_a5495b6cc8283ee6846538b70ef09cfd0"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a5495b6cc8283ee6846538b70ef09cfd0">em::EncoderMotor::ResetPulseCount</a></div><div class="ttdeci">void ResetPulseCount()</div><div class="ttdoc">Reset the encoder pulse count to 0.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00156">encoder_motor.cpp:156</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a69db8b9fc364d4d8f2509473d759ed0f"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a69db8b9fc364d4d8f2509473d759ed0f">em::EncoderMotor::PhaseRelation</a></div><div class="ttdeci">PhaseRelation</div><div class="ttdoc">Used to clarify the phase relationship between phase A and phase B of the encoder when the motor is r...</div><div class="ttdef"><b>Definition</b> <a href="#l00062">encoder_motor.h:62</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a69db8b9fc364d4d8f2509473d759ed0fa7086fd10e3da29b4359295cf6e3536f6"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a69db8b9fc364d4d8f2509473d759ed0fa7086fd10e3da29b4359295cf6e3536f6">em::EncoderMotor::kBPhaseLeads</a></div><div class="ttdeci">@ kBPhaseLeads</div><div class="ttdoc">Represents the situation where phase B leads phase A when the motor is rotating forward.</div><div class="ttdef"><b>Definition</b> <a href="#l00081">encoder_motor.h:81</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a69db8b9fc364d4d8f2509473d759ed0fabaf116cc352898fa6df6ef8ea8db13dc"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a69db8b9fc364d4d8f2509473d759ed0fabaf116cc352898fa6df6ef8ea8db13dc">em::EncoderMotor::kAPhaseLeads</a></div><div class="ttdeci">@ kAPhaseLeads</div><div class="ttdoc">Represents the situation where phase A leads phase B when the motor is rotating forward.</div><div class="ttdef"><b>Definition</b> <a href="#l00071">encoder_motor.h:71</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a78c6dd66d03d8c2d9f98041f400c396a"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a78c6dd66d03d8c2d9f98041f400c396a">em::EncoderMotor::RunPwmDuty</a></div><div class="ttdeci">void RunPwmDuty(const int16_t pwm_duty)</div><div class="ttdoc">Set motor PWM directly.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00116">encoder_motor.cpp:116</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a8a9fedb2482c88418b244c4794d427dd"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a8a9fedb2482c88418b244c4794d427dd">em::EncoderMotor::EncoderPulseCount</a></div><div class="ttdeci">int64_t EncoderPulseCount() const</div><div class="ttdoc">Get encoder pulse count. The count value is incremented by one during forward rotation and decremente...</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00152">encoder_motor.cpp:152</a></div></div>
-<div class="ttc" id="aclassem_1_1_encoder_motor_html_a8e41301b0622532cc66c59cfeb56684a"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a8e41301b0622532cc66c59cfeb56684a">em::EncoderMotor::TargetRpm</a></div><div class="ttdeci">int32_t TargetRpm() const</div><div class="ttdoc">Get the target speed of the motor in RPM.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00166">encoder_motor.cpp:166</a></div></div>
+<div class="ttc" id="aclassem_1_1_encoder_motor_html_a8e41301b0622532cc66c59cfeb56684a"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a8e41301b0622532cc66c59cfeb56684a">em::EncoderMotor::TargetRpm</a></div><div class="ttdeci">int32_t TargetRpm() const</div><div class="ttdoc">Get the target speed of the motor in RPM.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00170">encoder_motor.cpp:170</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a8e833aafb82e8a610dbb60700e3a1a8e"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a8e833aafb82e8a610dbb60700e3a1a8e">em::EncoderMotor::SetSpeedPid</a></div><div class="ttdeci">void SetSpeedPid(const float p, const float i, const float d)</div><div class="ttdoc">Set the parameters of the speed PID controller with the given Proportional (P), Integral (I),...</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00084">encoder_motor.cpp:84</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_a947aa69d66b0bff580baae9a2e5da4dc"><div class="ttname"><a href="classem_1_1_encoder_motor.html#a947aa69d66b0bff580baae9a2e5da4dc">em::EncoderMotor::GetSpeedPid</a></div><div class="ttdeci">void GetSpeedPid(float *const p, float *const i, float *const d) const</div><div class="ttdoc">Get the Proportional (P), Integral (I), and Derivative (D) parameter values of the speed PID controll...</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00097">encoder_motor.cpp:97</a></div></div>
 <div class="ttc" id="aclassem_1_1_encoder_motor_html_aab433c4bd09df5293857adbf396f9087"><div class="ttname"><a href="classem_1_1_encoder_motor.html#aab433c4bd09df5293857adbf396f9087">em::EncoderMotor::EncoderMotor</a></div><div class="ttdeci">EncoderMotor(const uint8_t positive_pin, const uint8_t negative_pin, const uint8_t a_pin, const uint8_t b_pin, const uint32_t ppr, const uint32_t reduction_ration, const PhaseRelation phase_relation)</div><div class="ttdoc">Constructor for creating an EncoderMotor object.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00028">encoder_motor.cpp:28</a></div></div>
-<div class="ttc" id="aclassem_1_1_encoder_motor_html_ae03160a42fcd772dc2455a7b530e488e"><div class="ttname"><a href="classem_1_1_encoder_motor.html#ae03160a42fcd772dc2455a7b530e488e">em::EncoderMotor::SpeedRpm</a></div><div class="ttdeci">int32_t SpeedRpm() const</div><div class="ttdoc">Get the current speed of the motor.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00156">encoder_motor.cpp:156</a></div></div>
+<div class="ttc" id="aclassem_1_1_encoder_motor_html_ae03160a42fcd772dc2455a7b530e488e"><div class="ttname"><a href="classem_1_1_encoder_motor.html#ae03160a42fcd772dc2455a7b530e488e">em::EncoderMotor::SpeedRpm</a></div><div class="ttdeci">int32_t SpeedRpm() const</div><div class="ttdoc">Get the current speed of the motor.</div><div class="ttdef"><b>Definition</b> <a href="encoder__motor_8cpp_source.html#l00160">encoder_motor.cpp:160</a></div></div>
 <div class="ttc" id="amotor_8h_html"><div class="ttname"><a href="motor_8h.html">motor.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

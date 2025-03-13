@@ -286,6 +286,16 @@ class EncoderMotor {
 
   /**
    * @~Chinese
+   * @brief 重置编码器脉冲计数为0
+   */
+  /**
+   * @~English
+   * @brief Reset the encoder pulse count to 0
+   */
+  void ResetPulseCount();
+
+  /**
+   * @~Chinese
    * @brief 获取电机当前的转速（RPM）。
    * @return 电机当前的转速（RPM）。
    */

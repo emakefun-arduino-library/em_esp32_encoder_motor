@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.1.0</span>
+   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.1.1</span>
    </div>
   </td>
  </tr>
@@ -146,6 +146,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a8a9fedb2482c88418b244c4794d427dd" id="r_a8a9fedb2482c88418b244c4794d427dd"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a9fedb2482c88418b244c4794d427dd">EncoderPulseCount</a> () const</td></tr>
 <tr class="memdesc:a8a9fedb2482c88418b244c4794d427dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取编码器脉冲计数。该计数值是在A相下降沿的时候计数，如果是正转会加一，反转则减一。  <br /></td></tr>
 <tr class="separator:a8a9fedb2482c88418b244c4794d427dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5495b6cc8283ee6846538b70ef09cfd0" id="r_a5495b6cc8283ee6846538b70ef09cfd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5495b6cc8283ee6846538b70ef09cfd0">ResetPulseCount</a> ()</td></tr>
+<tr class="memdesc:a5495b6cc8283ee6846538b70ef09cfd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置编码器脉冲计数为0  <br /></td></tr>
+<tr class="separator:a5495b6cc8283ee6846538b70ef09cfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae03160a42fcd772dc2455a7b530e488e" id="r_ae03160a42fcd772dc2455a7b530e488e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae03160a42fcd772dc2455a7b530e488e">SpeedRpm</a> () const</td></tr>
 <tr class="memdesc:ae03160a42fcd772dc2455a7b530e488e"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机当前的转速（RPM）。  <br /></td></tr>
 <tr class="separator:ae03160a42fcd772dc2455a7b530e488e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -456,7 +459,28 @@ PhaseRelation)</a> </dd></dl>
 <p>获取电机驱动器的PWM占空比。 </p>
 <dl class="section return"><dt>返回</dt><dd>PWM占空比（取值范围 -1023到1023）。正数代表正转，负数代表反转。 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00161">161</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00165">165</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5495b6cc8283ee6846538b70ef09cfd0" name="a5495b6cc8283ee6846538b70ef09cfd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5495b6cc8283ee6846538b70ef09cfd0">&#9670;&#160;</a></span>ResetPulseCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::EncoderMotor::ResetPulseCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重置编码器脉冲计数为0 </p>
+
+<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00156">156</a> 行定义.</p>
 
 </div>
 </div>
@@ -570,7 +594,7 @@ PhaseRelation)</a> </dd></dl>
 <p>获取电机当前的转速（RPM）。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机当前的转速（RPM）。 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00156">156</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00160">160</a> 行定义.</p>
 
 </div>
 </div>
@@ -613,7 +637,7 @@ PhaseRelation)</a> </dd></dl>
 <p>获取电机的目标转速（RPM）。 </p>
 <dl class="section return"><dt>返回</dt><dd>电机的目标转速（RPM）。 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00166">166</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="encoder__motor_8cpp_source.html">encoder_motor.cpp</a> 第 <a class="el" href="encoder__motor_8cpp_source.html#l00170">170</a> 行定义.</p>
 
 </div>
 </div>

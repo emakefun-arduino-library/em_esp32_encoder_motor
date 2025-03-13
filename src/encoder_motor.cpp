@@ -153,6 +153,10 @@ int64_t EncoderMotor::EncoderPulseCount() const {
   return pulse_count_;
 }
 
+void EncoderMotor::ResetPulseCount() {
+  pulse_count_ = 0;
+}
+
 int32_t EncoderMotor::SpeedRpm() const {
   std::unique_lock<std::mutex> lock(mutex_);
   return speed_rpm_;

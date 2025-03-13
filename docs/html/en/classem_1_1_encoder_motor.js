@@ -10,6 +10,7 @@ var classem_1_1_encoder_motor =
     [ "GetSpeedPid", "classem_1_1_encoder_motor.html#a947aa69d66b0bff580baae9a2e5da4dc", null ],
     [ "Init", "classem_1_1_encoder_motor.html#a12e18423baa47264af3960c120dcea6f", null ],
     [ "PwmDuty", "classem_1_1_encoder_motor.html#a2b3c2fff560cf81991dc98c58023d3e5", null ],
+    [ "ResetPulseCount", "classem_1_1_encoder_motor.html#a5495b6cc8283ee6846538b70ef09cfd0", null ],
     [ "RunPwmDuty", "classem_1_1_encoder_motor.html#a78c6dd66d03d8c2d9f98041f400c396a", null ],
     [ "RunSpeed", "classem_1_1_encoder_motor.html#a3fdd02d1351ea0061a20e1dbe945b35c", null ],
     [ "SetSpeedPid", "classem_1_1_encoder_motor.html#a8e833aafb82e8a610dbb60700e3a1a8e", null ],
