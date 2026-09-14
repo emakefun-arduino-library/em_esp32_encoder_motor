@@ -68,6 +68,7 @@ em::Motor g_motor_3(  // M3
     7                 // The negative pole of the motor is attached to LED Control (LEDC) Channel 7.
 );
 #endif
+// test
 }  // namespace
 
 void setup() {
