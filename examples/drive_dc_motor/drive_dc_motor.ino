@@ -16,56 +16,86 @@
 #include "encoder_motor_lib.h"
 #include "motor.h"
 
+#if defined(CONFIG_IDF_TARGET_ESP32S3)
+constexpr gpio_num_t kMotor0PinPos = GPIO_NUM_42;
+constexpr gpio_num_t kMotor0PinNeg = GPIO_NUM_41;
+
+constexpr gpio_num_t kMotor1PinPos = GPIO_NUM_1;
+constexpr gpio_num_t kMotor1PinNeg = GPIO_NUM_2;
+
+constexpr gpio_num_t kMotor2PinPos = GPIO_NUM_45;
+constexpr gpio_num_t kMotor2PinNeg = GPIO_NUM_48;
+
+constexpr gpio_num_t kMotor3PinPos = GPIO_NUM_35;
+constexpr gpio_num_t kMotor3PinNeg = GPIO_NUM_36;
+
+#elif defined(CONFIG_IDF_TARGET_ESP32)
+constexpr gpio_num_t kMotor0PinPos = GPIO_NUM_27;
+constexpr gpio_num_t kMotor0PinNeg = GPIO_NUM_13;
+
+constexpr gpio_num_t kMotor1PinPos = GPIO_NUM_4;
+constexpr gpio_num_t kMotor1PinNeg = GPIO_NUM_2;
+
+constexpr gpio_num_t kMotor2PinPos = GPIO_NUM_17;
+constexpr gpio_num_t kMotor2PinNeg = GPIO_NUM_12;
+
+constexpr gpio_num_t kMotor3PinPos = GPIO_NUM_15;
+constexpr gpio_num_t kMotor3PinNeg = GPIO_NUM_14;
+
+#else
+#error "Only ESP32 and ESP32S3 are supported"
+#endif
+
 namespace {
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
 em::Motor g_motor_0(  // M0
-    GPIO_NUM_27,      // The pin number of the motor's positive pole.
-    GPIO_NUM_13       // The pin number of the motor's negative pole.
+  kMotor0PinPos,      // The pin number of the motor's positive pole.
+  kMotor0PinNeg       // The pin number of the motor's negative pole.
 );
 
 em::Motor g_motor_1(  // M1
-    GPIO_NUM_4,       // The pin number of the motor's positive pole.
-    GPIO_NUM_2        // The pin number of the motor's negative pole.
+  kMotor1PinPos,      // The pin number of the motor's positive pole.
+  kMotor1PinNeg       // The pin number of the motor's negative pole.
 );
 
 em::Motor g_motor_2(  // M2
-    GPIO_NUM_17,      // The pin number of the motor's positive pole.
-    GPIO_NUM_12       // The pin number of the motor's negative pole.
+  kMotor2PinPos,      // The pin number of the motor's positive pole.
+  kMotor2PinNeg       // The pin number of the motor's negative pole.
 );
 
 em::Motor g_motor_3(  // M3
-    GPIO_NUM_15,      // The pin number of the motor's positive pole.
-    GPIO_NUM_14       // The pin number of the motor's negative pole.
+  kMotor3PinPos,      // The pin number of the motor's positive pole.
+  kMotor3PinNeg       // The pin number of the motor's negative pole.
 );
 
 #else  // The ESP32 Arduino Core Version is less than 3.0.0
 
 em::Motor g_motor_0(  // M0
-    GPIO_NUM_27,      // The pin number of the motor's positive pole.
-    0,                // The positive pole of the motor is attached to LED Control (LEDC) Channel 0.
-    GPIO_NUM_13,      // The pin number of the motor's negative pole.
-    1                 // The negative pole of the motor is attached to LED Control (LEDC) Channel 1.
+  kMotor0PinPos,      // The pin number of the motor's positive pole.
+  0,                  // The positive pole of the motor is attached to LED Control (LEDC) Channel 0.
+  kMotor0PinNeg,      // The pin number of the motor's negative pole.
+  1                   // The negative pole of the motor is attached to LED Control (LEDC) Channel 1.
 );
 
 em::Motor g_motor_1(  // M1
-    GPIO_NUM_4,       // The pin number of the motor's positive pole.
-    2,                // The positive pole of the motor is attached to LED Control (LEDC) Channel 2.
-    GPIO_NUM_2,       // The pin number of the motor's negative pole.
-    3                 // The negative pole of the motor is attached to LED Control (LEDC) Channel 3.
+  kMotor1PinPos,      // The pin number of the motor's positive pole.
+  2,                  // The positive pole of the motor is attached to LED Control (LEDC) Channel 2.
+  kMotor1PinNeg,      // The pin number of the motor's negative pole.
+  3                   // The negative pole of the motor is attached to LED Control (LEDC) Channel 3.
 );
 
 em::Motor g_motor_2(  // M2
-    GPIO_NUM_17,      // The pin number of the motor's positive pole.
-    4,                // The positive pole of the motor is attached to LED Control (LEDC) Channel 4.
-    GPIO_NUM_12,      // The pin number of the motor's negative pole.
-    5                 // The negative pole of the motor is attached to LED Control (LEDC) Channel 5.
+  kMotor2PinPos,      // The pin number of the motor's positive pole.
+  4,                  // The positive pole of the motor is attached to LED Control (LEDC) Channel 4.
+  kMotor2PinNeg,      // The pin number of the motor's negative pole.
+  5                   // The negative pole of the motor is attached to LED Control (LEDC) Channel 5.
 );
 
 em::Motor g_motor_3(  // M3
-    GPIO_NUM_15,      // The pin number of the motor's positive pole.
-    6,                // The positive pole of the motor is attached to LED Control (LEDC) Channel 6.
-    GPIO_NUM_14,      // The pin number of the motor's negative pole.
-    7                 // The negative pole of the motor is attached to LED Control (LEDC) Channel 7.
+  kMotor3PinPos,      // The pin number of the motor's positive pole.
+  6,                  // The positive pole of the motor is attached to LED Control (LEDC) Channel 6.
+  kMotor3PinNeg,      // The pin number of the motor's negative pole.
+  7                   // The negative pole of the motor is attached to LED Control (LEDC) Channel 7.
 );
 #endif
 }  // namespace

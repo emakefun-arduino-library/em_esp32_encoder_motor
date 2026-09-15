@@ -31,30 +31,46 @@ namespace {
 constexpr uint32_t kPPR = 12;              // Pulses per revolution.
 constexpr uint32_t kReductionRation = 90;  // Reduction ratio.
 
+#if defined(CONFIG_IDF_TARGET_ESP32S3)
+constexpr gpio_num_t kMotorPin1 = GPIO_NUM_42;
+constexpr gpio_num_t kMotorPin2 = GPIO_NUM_41;
+constexpr gpio_num_t kEncoderPinA = GPIO_NUM_38;
+constexpr gpio_num_t kEncoderPinB = GPIO_NUM_37;
+#elif defined(CONFIG_IDF_TARGET_ESP32)
+constexpr gpio_num_t kMotorPin1 = GPIO_NUM_27;
+constexpr gpio_num_t kMotorPin2 = GPIO_NUM_13;
+constexpr gpio_num_t kEncoderPinA = GPIO_NUM_18;
+constexpr gpio_num_t kEncoderPinB = GPIO_NUM_19;
+#else
+#error "Only ESP32 and ESP32S3 are supported"
+#endif
+
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
 em::EncoderMotor g_encoder_motor_0(  // E0
-    GPIO_NUM_27,                     // The pin number of the motor's positive pole.
-    GPIO_NUM_13,                     // The pin number of the motor's negative pole.
-    GPIO_NUM_18,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_19,                     // The pin number of the encoder's B phase.
-    kPPR,                            // Pulses per revolution.
-    kReductionRation,                // Reduction ratio.
-    em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+  kMotorPin1,                        // The pin number of the motor's positive pole.
+  kMotorPin2,                        // The pin number of the motor's negative pole.
+  kEncoderPinA,                      // The pin number of the encoder's A phase.
+  kEncoderPinB,                      // The pin number of the encoder's B phase.
+  kPPR,                              // Pulses per revolution.
+  kReductionRation,                  // Reduction ratio.
+  em::EncoderMotor::kAPhaseLeads     // Phase relationship (A phase leads or B phase leads, referring to the situation when
                                      // the motor is rotating forward)
 );
 
 #else  // The ESP32 Arduino Core Version is less than 3.0.0
 
+constexpr uint8_t kMotorAChannel = 0;
+constexpr uint8_t kMotorBChannel = 1;
 em::EncoderMotor g_encoder_motor_0(  // E0
-    GPIO_NUM_27,                     // The pin number of the motor's positive pole.
-    0,                               // The positive pole of the motor is attached to LED Control (LEDC) Channel 0.
-    GPIO_NUM_13,                     // The pin number of the motor's negative pole.
-    1,                               // The negative pole of the motor is attached to LED Control (LEDC) Channel 1.
-    GPIO_NUM_18,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_19,                     // The pin number of the encoder's B phase.
-    kPPR,                            // Pulses per revolution.
-    kReductionRation,                // Reduction ratio.
-    em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
+  kMotorPin1,                        // The pin number of the motor's positive pole.
+  kMotorAChannel,                    // The positive pole of the motor is attached to LED Control (LEDC) Channel 0.
+  kMotorPin2,                        // The pin number of the motor's negative pole.
+  kMotorBChannel,                    // The negative pole of the motor is attached to LED Control (LEDC) Channel 1.
+  kEncoderPinA,                      // The pin number of the encoder's A phase.
+  kEncoderPinB,                      // The pin number of the encoder's B phase.
+  kPPR,                              // Pulses per revolution.
+  kReductionRation,                  // Reduction ratio.
+  em::EncoderMotor::kAPhaseLeads     // Phase relationship (A phase leads or B phase leads, referring to the situation when
                                      // the motor is rotating forward)
 );
 #endif
@@ -73,16 +89,16 @@ void loop() {
   const auto rpm = g_encoder_motor_0.SpeedRpm();
   if (rpm > 0) {
     printf(
-        "[%lu] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
-        "enum.\n",
-        millis(),
-        rpm);
+      "[%lu] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
+      "enum.\n",
+      millis(),
+      rpm);
   } else if (rpm < 0) {
     printf(
-        "[%lu] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
-        "enum.\n",
-        millis(),
-        rpm);
+      "[%lu] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
+      "enum.\n",
+      millis(),
+      rpm);
   } else {
     printf("The motor is not running currently.\n");
   }
