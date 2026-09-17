@@ -20,12 +20,59 @@ namespace {
 constexpr uint32_t kPPR = 12;              // Pulses per revolution.
 constexpr uint32_t kReductionRation = 90;  // Reduction ratio.
 
+#if defined(ARDUINO_ESP32S3_DEV)
+
+constexpr gpio_num_t kMotor0PinPos = GPIO_NUM_42;
+constexpr gpio_num_t kMotor0PinNeg = GPIO_NUM_41;
+constexpr gpio_num_t kEncoder0PinA = GPIO_NUM_38;
+constexpr gpio_num_t kEncoder0PinB = GPIO_NUM_37;
+
+constexpr gpio_num_t kMotor1PinPos = GPIO_NUM_1;
+constexpr gpio_num_t kMotor1PinNeg = GPIO_NUM_2;
+constexpr gpio_num_t kEncoder1PinA = GPIO_NUM_40;
+constexpr gpio_num_t kEncoder1PinB = GPIO_NUM_39;
+
+constexpr gpio_num_t kMotor2PinPos = GPIO_NUM_45;
+constexpr gpio_num_t kMotor2PinNeg = GPIO_NUM_48;
+constexpr gpio_num_t kEncoder2PinA = GPIO_NUM_21;
+constexpr gpio_num_t kEncoder2PinB = GPIO_NUM_47;
+
+constexpr gpio_num_t kMotor3PinPos = GPIO_NUM_35;
+constexpr gpio_num_t kMotor3PinNeg = GPIO_NUM_36;
+constexpr gpio_num_t kEncoder3PinA = GPIO_NUM_13;
+constexpr gpio_num_t kEncoder3PinB = GPIO_NUM_14;
+
+#elif defined(ARDUINO_ESP32_DEV)
+
+constexpr gpio_num_t kMotor0PinPos = GPIO_NUM_27;
+constexpr gpio_num_t kMotor0PinNeg = GPIO_NUM_13;
+constexpr gpio_num_t kEncoder0PinA = GPIO_NUM_19;
+constexpr gpio_num_t kEncoder0PinB = GPIO_NUM_18;
+
+constexpr gpio_num_t kMotor1PinPos = GPIO_NUM_4;
+constexpr gpio_num_t kMotor1PinNeg = GPIO_NUM_2;
+constexpr gpio_num_t kEncoder1PinA = GPIO_NUM_23;
+constexpr gpio_num_t kEncoder1PinB = GPIO_NUM_5;
+
+constexpr gpio_num_t kMotor2PinPos = GPIO_NUM_17;
+constexpr gpio_num_t kMotor2PinNeg = GPIO_NUM_12;
+constexpr gpio_num_t kEncoder2PinA = GPIO_NUM_36;
+constexpr gpio_num_t kEncoder2PinB = GPIO_NUM_35;
+
+constexpr gpio_num_t kMotor3PinPos = GPIO_NUM_15;
+constexpr gpio_num_t kMotor3PinNeg = GPIO_NUM_14;
+constexpr gpio_num_t kEncoder3PinA = GPIO_NUM_39;
+constexpr gpio_num_t kEncoder3PinB = GPIO_NUM_34;
+#else
+#error "Only ESP32 and ESP32S3 are support"
+#endif
+
 #if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
 em::EncoderMotor g_encoder_motor_0(  // E0
-    GPIO_NUM_27,                     // The pin number of the motor's positive pole.
-    GPIO_NUM_13,                     // The pin number of the motor's negative pole.
-    GPIO_NUM_18,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_19,                     // The pin number of the encoder's B phase.
+    kMotor0PinPos,                   // The pin number of the motor's positive pole.
+    kMotor0PinNeg,                   // The pin number of the motor's negative pole.
+    kEncoder0PinA,                   // The pin number of the encoder's A phase.
+    kEncoder0PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -33,10 +80,10 @@ em::EncoderMotor g_encoder_motor_0(  // E0
 );
 
 em::EncoderMotor g_encoder_motor_1(  // E1
-    GPIO_NUM_4,                      // The pin number of the motor's positive pole.
-    GPIO_NUM_2,                      // The pin number of the motor's negative pole.
-    GPIO_NUM_5,                      // The pin number of the encoder's A phase.
-    GPIO_NUM_23,                     // The pin number of the encoder's B phase.
+    kMotor1PinPos,                   // The pin number of the motor's positive pole.
+    kMotor1PinNeg,                   // The pin number of the motor's negative pole.
+    kEncoder1PinA,                   // The pin number of the encoder's A phase.
+    kEncoder1PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -44,10 +91,10 @@ em::EncoderMotor g_encoder_motor_1(  // E1
 );
 
 em::EncoderMotor g_encoder_motor_2(  // E2
-    GPIO_NUM_17,                     // The pin number of the motor's positive pole.
-    GPIO_NUM_12,                     // The pin number of the motor's negative pole.
-    GPIO_NUM_35,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_36,                     // The pin number of the encoder's B phase.
+    kMotor2PinPos,                   // The pin number of the motor's positive pole.
+    kMotor2PinNeg,                   // The pin number of the motor's negative pole.
+    kEncoder2PinA,                   // The pin number of the encoder's A phase.
+    kEncoder2PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -55,10 +102,10 @@ em::EncoderMotor g_encoder_motor_2(  // E2
 );
 
 em::EncoderMotor g_encoder_motor_3(  // E3
-    GPIO_NUM_15,                     // The pin number of the motor's positive pole.
-    GPIO_NUM_14,                     // The pin number of the motor's negative pole.
-    GPIO_NUM_34,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_39,                     // The pin number of the encoder's B phase.
+    kMotor3PinPos,                   // The pin number of the motor's positive pole.
+    kMotor3PinNeg,                   // The pin number of the motor's negative pole.
+    kEncoder3PinA,                   // The pin number of the encoder's A phase.
+    kEncoder3PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -68,12 +115,12 @@ em::EncoderMotor g_encoder_motor_3(  // E3
 #else  // The ESP32 Arduino Core Version is less than 3.0.0
 
 em::EncoderMotor g_encoder_motor_0(  // E0
-    GPIO_NUM_27,                     // The pin number of the motor's positive pole.
+    kMotor0PinPos,                   // The pin number of the motor's positive pole.
     0,                               // The positive pole of the motor is attached to LED Control (LEDC) Channel 0.
-    GPIO_NUM_13,                     // The pin number of the motor's negative pole.
+    kMotor0PinNeg,                   // The pin number of the motor's negative pole.
     1,                               // The negative pole of the motor is attached to LED Control (LEDC) Channel 1.
-    GPIO_NUM_18,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_19,                     // The pin number of the encoder's B phase.
+    kEncoder0PinA,                   // The pin number of the encoder's A phase.
+    kEncoder0PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -81,12 +128,12 @@ em::EncoderMotor g_encoder_motor_0(  // E0
 );
 
 em::EncoderMotor g_encoder_motor_1(  // E1
-    GPIO_NUM_4,                      // The pin number of the motor's positive pole.
+    kMotor1PinPos,                   // The pin number of the motor's positive pole.
     2,                               // The positive pole of the motor is attached to LED Control (LEDC) Channel 2.
-    GPIO_NUM_2,                      // The pin number of the motor's negative pole.
+    kMotor1PinNeg,                   // The pin number of the motor's negative pole.
     3,                               // The negative pole of the motor is attached to LED Control (LEDC) Channel 3.
-    GPIO_NUM_5,                      // The pin number of the encoder's A phase.
-    GPIO_NUM_23,                     // The pin number of the encoder's B phase.
+    kEncoder1PinA,                   // The pin number of the encoder's A phase.
+    kEncoder1PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -94,12 +141,12 @@ em::EncoderMotor g_encoder_motor_1(  // E1
 );
 
 em::EncoderMotor g_encoder_motor_2(  // E2
-    GPIO_NUM_17,                     // The pin number of the motor's positive pole.
+    kMotor2PinPos,                   // The pin number of the motor's positive pole.
     4,                               // The positive pole of the motor is attached to LED Control (LEDC) Channel 4.
-    GPIO_NUM_12,                     // The pin number of the motor's negative pole.
+    kMotor2PinNeg,                   // The pin number of the motor's negative pole.
     5,                               // The negative pole of the motor is attached to LED Control (LEDC) Channel 5.
-    GPIO_NUM_35,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_36,                     // The pin number of the encoder's B phase.
+    kEncoder2PinA,                   // The pin number of the encoder's A phase.
+    kEncoder2PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
@@ -107,12 +154,12 @@ em::EncoderMotor g_encoder_motor_2(  // E2
 );
 
 em::EncoderMotor g_encoder_motor_3(  // E3
-    GPIO_NUM_15,                     // The pin number of the motor's positive pole.
+    kMotor3PinPos,                   // The pin number of the motor's positive pole.
     6,                               // The positive pole of the motor is attached to LED Control (LEDC) Channel 6.
-    GPIO_NUM_14,                     // The pin number of the motor's negative pole.
+    kMotor3PinNeg,                   // The pin number of the motor's negative pole.
     7,                               // The negative pole of the motor is attached to LED Control (LEDC) Channel 7.
-    GPIO_NUM_34,                     // The pin number of the encoder's A phase.
-    GPIO_NUM_39,                     // The pin number of the encoder's B phase.
+    kEncoder3PinA,                   // The pin number of the encoder's A phase.
+    kEncoder3PinB,                   // The pin number of the encoder's B phase.
     kPPR,                            // Pulses per revolution.
     kReductionRation,                // Reduction ratio.
     em::EncoderMotor::kAPhaseLeads   // Phase relationship (A phase leads or B phase leads, referring to the situation when
