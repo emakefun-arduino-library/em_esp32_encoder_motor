@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.2.0</span>
    </div>
   </td>
  </tr>
@@ -133,12 +133,26 @@ $(function(){initNavTree('detect_phase_relation_8ino-example.html',''); initResi
 <div class="line"><span class="keyword">constexpr</span> uint32_t kPPR = 12;              <span class="comment">// Pulses per revolution.</span></div>
 <div class="line"><span class="keyword">constexpr</span> uint32_t kReductionRation = 90;  <span class="comment">// Reduction ratio.</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#if defined(ARDUINO_ESP32S3_DEV)</span></div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotorPinPos = GPIO_NUM_42;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotorPinNeg = GPIO_NUM_41;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kEncoderPinA = GPIO_NUM_38;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kEncoderPinB = GPIO_NUM_37;</div>
+<div class="line"><span class="preprocessor">#elif defined(ARDUINO_ESP32_DEV)</span></div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotorPinPos = GPIO_NUM_27;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotorPinNeg = GPIO_NUM_13;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kEncoderPinA = GPIO_NUM_18;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kEncoderPinB = GPIO_NUM_19;</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor">#error &quot;Only ESP32 and ESP32S3 are supported&quot;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
 <div class="line"><span class="preprocessor">#if ESP_ARDUINO_VERSION &gt;= ESP_ARDUINO_VERSION_VAL(3, 0, 0)</span></div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="classem_1_1_encoder_motor.html">em::EncoderMotor</a> g_encoder_motor_0(  <span class="comment">// E0</span></div>
-<div class="line">    GPIO_NUM_27,                     <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    GPIO_NUM_13,                     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
-<div class="line">    GPIO_NUM_18,                     <span class="comment">// The pin number of the encoder&#39;s A phase.</span></div>
-<div class="line">    GPIO_NUM_19,                     <span class="comment">// The pin number of the encoder&#39;s B phase.</span></div>
+<div class="line">    kMotorPinPos,                    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotorPinNeg,                    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kEncoderPinA,                    <span class="comment">// The pin number of the encoder&#39;s A phase.</span></div>
+<div class="line">    kEncoderPinB,                    <span class="comment">// The pin number of the encoder&#39;s B phase.</span></div>
 <div class="line">    kPPR,                            <span class="comment">// Pulses per revolution.</span></div>
 <div class="line">    kReductionRation,                <span class="comment">// Reduction ratio.</span></div>
 <div class="line">    <a class="code hl_enumvalue" href="classem_1_1_encoder_motor.html#a69db8b9fc364d4d8f2509473d759ed0fabaf116cc352898fa6df6ef8ea8db13dc">em::EncoderMotor::kAPhaseLeads</a>   <span class="comment">// Phase relationship (A phase leads or B phase leads, referring to the situation when</span></div>
@@ -147,13 +161,15 @@ $(function(){initNavTree('detect_phase_relation_8ino-example.html',''); initResi
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#else  </span><span class="comment">// The ESP32 Arduino Core Version is less than 3.0.0</span></div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> uint8_t kMotorAChannel = 0;</div>
+<div class="line"><span class="keyword">constexpr</span> uint8_t kMotorBChannel = 1;</div>
 <div class="line"><a class="code hl_class" href="classem_1_1_encoder_motor.html">em::EncoderMotor</a> g_encoder_motor_0(  <span class="comment">// E0</span></div>
-<div class="line">    GPIO_NUM_27,                     <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    0,                               <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 0.</span></div>
-<div class="line">    GPIO_NUM_13,                     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
-<div class="line">    1,                               <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 1.</span></div>
-<div class="line">    GPIO_NUM_18,                     <span class="comment">// The pin number of the encoder&#39;s A phase.</span></div>
-<div class="line">    GPIO_NUM_19,                     <span class="comment">// The pin number of the encoder&#39;s B phase.</span></div>
+<div class="line">    kMotorPinPos,                    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotorAChannel,                  <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 0.</span></div>
+<div class="line">    kMotorPinNeg,                    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotorBChannel,                  <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 1.</span></div>
+<div class="line">    kEncoderPinA,                    <span class="comment">// The pin number of the encoder&#39;s A phase.</span></div>
+<div class="line">    kEncoderPinB,                    <span class="comment">// The pin number of the encoder&#39;s B phase.</span></div>
 <div class="line">    kPPR,                            <span class="comment">// Pulses per revolution.</span></div>
 <div class="line">    kReductionRation,                <span class="comment">// Reduction ratio.</span></div>
 <div class="line">    <a class="code hl_enumvalue" href="classem_1_1_encoder_motor.html#a69db8b9fc364d4d8f2509473d759ed0fabaf116cc352898fa6df6ef8ea8db13dc">em::EncoderMotor::kAPhaseLeads</a>   <span class="comment">// Phase relationship (A phase leads or B phase leads, referring to the situation when</span></div>
@@ -175,13 +191,13 @@ $(function(){initNavTree('detect_phase_relation_8ino-example.html',''); initResi
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> rpm = g_encoder_motor_0.SpeedRpm();</div>
 <div class="line">  <span class="keywordflow">if</span> (rpm &gt; 0) {</div>
 <div class="line">    printf(</div>
-<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads &quot;</span></div>
+<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %ld . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads &quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;enum.\n&quot;</span>,</div>
 <div class="line">        millis(),</div>
 <div class="line">        rpm);</div>
 <div class="line">  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (rpm &lt; 0) {</div>
 <div class="line">    printf(</div>
-<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads &quot;</span></div>
+<div class="line">        <span class="stringliteral">&quot;[%lu] RPM: %ld . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads &quot;</span></div>
 <div class="line">        <span class="stringliteral">&quot;enum.\n&quot;</span>,</div>
 <div class="line">        millis(),</div>
 <div class="line">        rpm);</div>

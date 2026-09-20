@@ -354,9 +354,9 @@ class EncoderMotor {
   std::condition_variable condition_;
   std::thread* update_rpm_thread_ = nullptr;
   std::thread* driving_thread_ = nullptr;
-  Motor motor_driver_;
   const uint8_t pin_a_ = 0;
   const uint8_t pin_b_ = 0;
+  Motor motor_driver_;
   const double total_ppr_ = 0;
   const uint8_t b_level_at_a_falling_edge_ = 0;
   Pid rpm_pid_;

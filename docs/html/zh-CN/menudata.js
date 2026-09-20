@@ -37,4 +37,4 @@ var menudata={children:[
 {text:"文件列表",url:"files.html"}]},
 {text:"示例",url:"examples.html"},
 {text:"下载",url:"usergroup0.html",children:[
-{text:"下载库: Emakefun_Encoder_Motor_v1.1.1.zip",url:"../../download/Emakefun_Encoder_Motor_v1.1.1.zip"}]}]}
+{text:"Emakefun_Encoder_Motor_v1.2.0.zip: https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip",url:"^https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip"}]}]}

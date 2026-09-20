@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.2.0</span>
    </div>
   </td>
  </tr>
@@ -118,55 +118,85 @@ $(function(){initNavTree('drive_dc_motor_8ino-example.html',''); initResizable(t
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="encoder__motor__lib_8h.html">encoder_motor_lib.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="motor_8h.html">motor.h</a>&quot;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#if defined(ARDUINO_ESP32S3_DEV)</span></div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor0PinPos = GPIO_NUM_42;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor0PinNeg = GPIO_NUM_41;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor1PinPos = GPIO_NUM_1;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor1PinNeg = GPIO_NUM_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor2PinPos = GPIO_NUM_45;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor2PinNeg = GPIO_NUM_48;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor3PinPos = GPIO_NUM_35;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor3PinNeg = GPIO_NUM_36;</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#elif defined(ARDUINO_ESP32_DEV)</span></div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor0PinPos = GPIO_NUM_27;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor0PinNeg = GPIO_NUM_13;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor1PinPos = GPIO_NUM_4;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor1PinNeg = GPIO_NUM_2;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor2PinPos = GPIO_NUM_17;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor2PinNeg = GPIO_NUM_12;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor3PinPos = GPIO_NUM_15;</div>
+<div class="line"><span class="keyword">constexpr</span> gpio_num_t kMotor3PinNeg = GPIO_NUM_14;</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor">#error &quot;Only ESP32 and ESP32S3 are supported&quot;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="preprocessor">#if ESP_ARDUINO_VERSION &gt;= ESP_ARDUINO_VERSION_VAL(3, 0, 0)</span></div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_0(  <span class="comment">// M0</span></div>
-<div class="line">    GPIO_NUM_27,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    GPIO_NUM_13       <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor0PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor0PinNeg     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_1(  <span class="comment">// M1</span></div>
-<div class="line">    GPIO_NUM_4,       <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    GPIO_NUM_2        <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor1PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor1PinNeg     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_2(  <span class="comment">// M2</span></div>
-<div class="line">    GPIO_NUM_17,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    GPIO_NUM_12       <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor2PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor2PinNeg     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_3(  <span class="comment">// M3</span></div>
-<div class="line">    GPIO_NUM_15,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
-<div class="line">    GPIO_NUM_14       <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor3PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor3PinNeg     <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#else  </span><span class="comment">// The ESP32 Arduino Core Version is less than 3.0.0</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_0(  <span class="comment">// M0</span></div>
-<div class="line">    GPIO_NUM_27,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor0PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
 <div class="line">    0,                <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 0.</span></div>
-<div class="line">    GPIO_NUM_13,      <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor0PinNeg,    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">    1                 <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 1.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_1(  <span class="comment">// M1</span></div>
-<div class="line">    GPIO_NUM_4,       <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor1PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
 <div class="line">    2,                <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 2.</span></div>
-<div class="line">    GPIO_NUM_2,       <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor1PinNeg,    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">    3                 <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 3.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_2(  <span class="comment">// M2</span></div>
-<div class="line">    GPIO_NUM_17,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor2PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
 <div class="line">    4,                <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 4.</span></div>
-<div class="line">    GPIO_NUM_12,      <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor2PinNeg,    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">    5                 <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 5.</span></div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classem_1_1_motor.html">em::Motor</a> g_motor_3(  <span class="comment">// M3</span></div>
-<div class="line">    GPIO_NUM_15,      <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
+<div class="line">    kMotor3PinPos,    <span class="comment">// The pin number of the motor&#39;s positive pole.</span></div>
 <div class="line">    6,                <span class="comment">// The positive pole of the motor is attached to LED Control (LEDC) Channel 6.</span></div>
-<div class="line">    GPIO_NUM_14,      <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
+<div class="line">    kMotor3PinNeg,    <span class="comment">// The pin number of the motor&#39;s negative pole.</span></div>
 <div class="line">    7                 <span class="comment">// The negative pole of the motor is attached to LED Control (LEDC) Channel 7.</span></div>
 <div class="line">);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>

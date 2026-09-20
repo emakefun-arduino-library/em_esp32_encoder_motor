@@ -1,6 +1,5 @@
 var NAVTREEINDEX0 =
 {
-"../../download/Emakefun_Encoder_Motor_v1.1.1.zip":[3,0],
 "annotated.html":[0,0],
 "classem_1_1_encoder_motor.html":[0,0,0,0],
 "classem_1_1_encoder_motor.html#a12e18423baa47264af3960c120dcea6f":[0,0,0,0,5],

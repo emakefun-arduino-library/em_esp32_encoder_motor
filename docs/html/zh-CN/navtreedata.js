@@ -41,14 +41,14 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "下载库: Emakefun_Encoder_Motor_v1.1.1.zip", "../../download/Emakefun_Encoder_Motor_v1.1.1.zip", null ]
+      [ "Emakefun_Encoder_Motor_v1.2.0.zip: https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip", "^https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip", null ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"../../download/Emakefun_Encoder_Motor_v1.1.1.zip"
+"annotated.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

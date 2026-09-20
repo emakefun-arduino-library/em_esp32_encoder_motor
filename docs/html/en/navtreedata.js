@@ -41,14 +41,14 @@ var NAVTREE =
     ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Downloads", "usergroup0.html", [
-      [ "Download Library: Emakefun_Encoder_Motor_v1.1.1.zip", "../../download/Emakefun_Encoder_Motor_v1.1.1.zip", null ]
+      [ "Emakefun_Encoder_Motor_v1.2.0.zip: https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip", "^https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip", null ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"../../download/Emakefun_Encoder_Motor_v1.1.1.zip"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -187,7 +187,7 @@ void loop() {
   g_encoder_motor_3.RunSpeed(speed_rpm);
 
   printf("target speed rpm: %" PRIi16 ", current speed rpm: [%4" PRId32 ", %4" PRId32 ", %4" PRId32 ", %4" PRId32
-         "], pwm duties: [%5 " PRIi16 ", %5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 "], pulse counts: [%" PRId64 ", %" PRId64
+         "], pwm duties: [%5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 ", %5" PRIi16 "], pulse counts: [%" PRId64 ", %" PRId64
          ", %" PRId64 ", %" PRId64 "]\n",
          speed_rpm,
          g_encoder_motor_0.SpeedRpm(),

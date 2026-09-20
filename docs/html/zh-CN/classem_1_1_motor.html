@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.1.1</span>
+   <div id="projectname">Emakefun Encoder Motor Arduino 库<span id="projectnumber">&#160;1.2.0</span>
    </div>
   </td>
  </tr>
@@ -135,7 +135,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a182d4dcd83fa90f2e7a662040b0a03b5" id="r_a182d4dcd83fa90f2e7a662040b0a03b5"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a> = 10</td></tr>
 <tr class="memdesc:a182d4dcd83fa90f2e7a662040b0a03b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的分辨率，决定了PWM占空比可调节的精细程度，单位为位，这里设置为10位。  <br /></td></tr>
 <tr class="separator:a182d4dcd83fa90f2e7a662040b0a03b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8896242118d010267612ab03c1847a4" id="r_ae8896242118d010267612ab03c1847a4"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8896242118d010267612ab03c1847a4">kPwmFrequency</a> = 75000</td></tr>
+<tr class="memitem:ae8896242118d010267612ab03c1847a4" id="r_ae8896242118d010267612ab03c1847a4"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8896242118d010267612ab03c1847a4">kPwmFrequency</a> = 250</td></tr>
 <tr class="memdesc:ae8896242118d010267612ab03c1847a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM的频率，单位为赫兹，这里设置为75000赫兹，用于控制电机驱动的PWM信号频率。  <br /></td></tr>
 <tr class="separator:ae8896242118d010267612ab03c1847a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a329178a1c6fb0b5c71c43fc951247b" id="r_a6a329178a1c6fb0b5c71c43fc951247b"><td class="memItemLeft" align="right" valign="top">static constexpr int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a329178a1c6fb0b5c71c43fc951247b">kMaxPwmDuty</a> = (1 &lt;&lt; <a class="el" href="#a182d4dcd83fa90f2e7a662040b0a03b5">kPwmResolution</a>) - 1</td></tr>
@@ -373,7 +373,7 @@ uint8_t, const uint8_t, const uint8_t)</a> </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t em::Motor::kPwmFrequency = 75000</td>
+          <td class="memname">uint8_t em::Motor::kPwmFrequency = 250</td>
         </tr>
       </table>
   </td>
