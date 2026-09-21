@@ -89,13 +89,13 @@ void loop() {
   const auto rpm = g_encoder_motor_0.SpeedRpm();
   if (rpm > 0) {
     printf(
-        "[%lu] RPM: %d . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
+        "[%lu] RPM: %ld . The phase of A leads B. Constructed with the em::EncoderMotor::PhaseRelation::kAPhaseLeads "
         "enum.\n",
         millis(),
         rpm);
   } else if (rpm < 0) {
     printf(
-        "[%lu] RPM: %d . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
+        "[%lu] RPM: %ld . The phase of B leads A. Constructed with the em::EncoderMotor::PhaseRelation::kBPhaseLeads "
         "enum.\n",
         millis(),
         rpm);

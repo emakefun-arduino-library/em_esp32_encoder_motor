@@ -45,7 +45,7 @@ class Motor {
    * @brief The frequency of PWM, in Hertz. Here it is set to 75000 Hz, used to control the frequency of the PWM signal for
    * motor driving.
    */
-  static constexpr uint8_t kPwmFrequency = 75000;
+  static constexpr uint8_t kPwmFrequency = 250;
 
   static_assert(kPwmResolution > 1);
   /**

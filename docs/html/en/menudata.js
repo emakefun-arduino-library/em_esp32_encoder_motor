@@ -37,4 +37,4 @@ var menudata={children:[
 {text:"File List",url:"files.html"}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"Download Library: Emakefun_Encoder_Motor_v1.1.1.zip",url:"../../download/Emakefun_Encoder_Motor_v1.1.1.zip"}]}]}
+{text:"Emakefun_Encoder_Motor_v1.2.0.zip: https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip",url:"^https://github.com/emakefun-arduino-library/em_esp32_encoder_motor/archive/refs/tags/v1.2.0.zip"}]}]}

@@ -29,7 +29,7 @@ constexpr uint8_t kVersionMajor = 1;
  * @~English
  * @brief Minor version number.
  */
-constexpr uint8_t kVersionMinor = 1;
+constexpr uint8_t kVersionMinor = 2;
 
 /**
  * @~Chinese
@@ -39,7 +39,7 @@ constexpr uint8_t kVersionMinor = 1;
  * @~English
  * @brief Patch version number.
  */
-constexpr uint8_t kVersionPatch = 1;
+constexpr uint8_t kVersionPatch = 0;
 
 /**
  * @~Chinese
